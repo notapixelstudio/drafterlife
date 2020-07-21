@@ -24,14 +24,19 @@ signal picked
 signal dropped
 
 var previous_mouse_position = Vector2()
-var dragging = false
+var dragging = false setget set_dragging
+
+func set_dragging(v):
+	dragging = v
+	
+	z_index = int(dragging) # set z-index to one while dragging, to keep the card above others
 
 func _on_Card_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('ui_touch'):
 		# Start dragging
 		get_tree().set_input_as_handled()
 		previous_mouse_position = event.position
-		dragging = true
+		set_dragging(true)
 		set_hovering(false)
 		emit_signal('picked', self)
 
@@ -48,7 +53,7 @@ func _input(event):
 	if event.is_action_released('ui_touch'):
 		# End dragging
 		previous_mouse_position = Vector2()
-		dragging = false
+		set_dragging(false)
 		
 		# Check if dropped onto target
 		for area in get_overlapping_areas():
