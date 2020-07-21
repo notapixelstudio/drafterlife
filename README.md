@@ -1,2 +1,2 @@
 # drafterlife
-Experimental graphic adevnture game with... cards
+Experimental graphic adventure game with... cards
