@@ -29,5 +29,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tween" type="Tween" parent="."]
+[node name="PositionTween" type="Tween" parent="."]
+
+[node name="ScaleTween" type="Tween" parent="."]
 [connection signal="input_event" from="." to="." method="_on_Card_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Card_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Card_mouse_exited"]
