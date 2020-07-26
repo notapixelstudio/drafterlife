@@ -25,6 +25,7 @@ signal dropped
 
 var previous_mouse_position = Vector2()
 var dragging = false setget set_dragging
+var hoverable = true
 
 func set_dragging(v):
 	dragging = v
@@ -84,6 +85,8 @@ onready var scale_tween = $ScaleTween
 var hovering = false setget set_hovering
 
 func set_hovering(v):
+	if not hoverable:
+		return
 	hovering = v
 	
 	var target_scale
@@ -102,3 +105,6 @@ func _on_Card_mouse_entered():
 	
 func _on_Card_mouse_exited():
 	set_hovering(false)
+
+func can_hover(v:bool):
+	hoverable = v
