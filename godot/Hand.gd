@@ -9,6 +9,7 @@ func draw(what):
 	add_child(card)
 	card.connect('dropped', self, '_on_Card_dropped')
 	card.connect('tree_exited', self, '_on_Card_destroyed')
+	card.connect('picked', self, '_on_Card_picked')
 	card.title = what
 	update_card_positions()
 	
@@ -19,6 +20,15 @@ func update_card_positions():
 		
 func _on_Card_dropped(card):
 	update_card_positions()
+	for child in get_children():
+		if card != child:
+			child.can_hover(true)
+
+func _on_Card_picked(card):
+	print("picked: ", card.name)
+	for child in get_children():
+		if card != child:
+			child.can_hover(false)
 	
 func _on_Card_destroyed():
 	update_card_positions()
