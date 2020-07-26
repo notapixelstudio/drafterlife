@@ -25,7 +25,6 @@ func _on_Card_dropped(card):
 			child.can_hover(true)
 
 func _on_Card_picked(card):
-	print("picked: ", card.name)
 	for child in get_children():
 		if card != child:
 			child.can_hover(false)
